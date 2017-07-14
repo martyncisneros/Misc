@@ -178,7 +178,7 @@ $(document).ready(function () {
 <li>An assessment of which of their new customers are likely to leave in the next quarter.</li>
 </ul>
 <p>Objective:</p>
-<p>Identify the drivers of customer churn in this cohort of San Francisco area customers from the last quarter. My main priority for this analysis is to lay the foundation for understanding the factors that cause the ending of contracts, then creating an accurate predictive model.</p>
+<p>Identify the drivers of customer churn within the San Francisco Bay Area cohort from the previous quarter. My main priority for this analysis is to lay the foundation for understanding the factors that cause churn, then creating an accurate predictive model.</p>
 <p>I will begin by importing the data into R for initial exploration and to conduct any necessary cleaning or mutating of raw data.</p>
 </div>
 <div id="data-wrangling" class="section level2">
@@ -201,7 +201,7 @@ new_customers &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<sp
 <h2>Data Exploration</h2>
 <p>Data Integrity checks include looking for duplicates, missing values, “sniff” testing the numbers to see if they make intuitive sense. In this section, I explored the three datasets and uncovered the following:</p>
 <ul>
-<li>Both account_activity and customer_info include duplicated entries for 40 customer_ids.</li>
+<li>Both account_activity and customer_info included duplicated entries for 40 customer_ids.</li>
 <li>Datasets are missing a Total_Calls aggregation of day, evening, night, and international calls.</li>
 <li>There is a discrepancy in the account details information we are given about customers. There are three distinct area codes but the state column spans 51 states.
 <ul>
@@ -460,8 +460,8 @@ new_customers &lt;-<span class="st"> </span><span class="kw">rename</span>(new_c
 </div>
 <div id="predictive-models" class="section level2">
 <h2>Predictive Models</h2>
-<p>I will utilize both Logistic Regression and Decision Tree models for the initial predictive analysis. Eventually, when improving accuracy of a model is the priority Random Forest should be considered.</p>
-<p>I will train the models using the customer activity data. Split into training and test sets:</p>
+<p>I will utilize both Logistic Regression and Decision Tree models for the initial predictive analysis. Eventually, when improving accuracy of the model is the priority, Random Forest should be considered.</p>
+<p>I will train the models using the customer activity data, split into training and test sets:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(caTools)
 
 <span class="kw">set.seed</span>(<span class="dv">3000</span>)
@@ -517,7 +517,7 @@ Test =<span class="st"> </span><span class="kw">subset</span>(customer_activity,
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Log_Model_Accuracy &lt;-<span class="st"> </span>(<span class="dv">834+24</span>)/(<span class="dv">834+24+121+21</span>)
 Log_Model_Accuracy</code></pre></div>
 <pre><code>## [1] 0.858</code></pre>
-<p>Baseline accuracy of a model that only predicts the most common outcome of no churn; the Logistic model is barely beats baseline.</p>
+<p>Baseline accuracy of a model that only predicts the most common outcome of no churn; the Logistic model barely beats baseline.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">Log_Baseline &lt;-(<span class="dv">834+21</span>)/(<span class="dv">834+24+121+21</span>)
 Log_Baseline</code></pre></div>
 <pre><code>## [1] 0.855</code></pre>
@@ -534,7 +534,7 @@ new_customer_predictions$Churn_predictLog &lt;-<span class="st"> </span><span cl
 </div>
 <div id="classification-and-regression-trees" class="section level3">
 <h3>Classification and Regression Trees</h3>
-<p>This method builds what is called a tree by splitting on the values of the independent variables. Some advantages of CART are that it does not assume a linear model, like linear or log regression, and it’s a very interpretable model.</p>
+<p>This method builds what is called a “tree”&quot; by splitting on the values of the independent variables. Some advantages of CART are that it does not assume a linear model, like linear or log regression, and it’s a very interpretable model.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rpart)
 <span class="kw">library</span>(rpart.plot)</code></pre></div>
 <p>I use the same independent variables for this method.</p>
