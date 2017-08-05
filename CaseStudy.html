@@ -700,8 +700,15 @@ new_customer_predictions &lt;-<span class="st"> </span><span class="kw">cbind</s
 <li>Are customers satisfied with their customer service experience? Are their issues/questions being resolved?</li>
 <li>Are the issues these customers facing preventable?</li>
 </ul></li>
-<li>Refine models with new data. Add Random Forest analysis to improve on the CART model and improve the accuracy of Logistic model through k-fold cross validation.
+<li>Refine models:
 <ul>
+<li>Add Random Forest analysis to improve on the CART model.</li>
+<li>Protect against overfitting through k-fold cross validation.</li>
+<li>Check performance of logistic regression model
+<ul>
+<li>AIC (Akaike Information Criteria)</li>
+<li>Null deviance and residual deviance</li>
+</ul></li>
 <li>Check accuracy after each quarter. Predicted vs Actual</li>
 </ul></li>
 <li>Conduct cancellation surveys to identify new variables to begin collecting in customer activity or information datasets.</li>
